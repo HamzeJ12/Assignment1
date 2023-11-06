@@ -14,6 +14,10 @@ public class Assignment1 {
             break;
             case 2:addPets();
             break;
+            case 3:searchPetsByName();
+            break;
+            case 4:searchPetsByAge();
+            break;
         }
         }
        
@@ -22,6 +26,8 @@ public class Assignment1 {
         Scanner input= new Scanner(System.in);
         System.out.println("1) View all pets");
         System.out.println("2) Add more pets");
+        System.out.println("3) Search pets by name");
+        System.out.println("4) Search pets by age");
         System.out.println("What would you like to do? ");
         int userInput=input.nextInt();
         return userInput;
@@ -46,6 +52,29 @@ public class Assignment1 {
         printTableHeader();
         printTableRow();
         printTableFooter();
+    }
+    
+        public static void searchPetsByName(){
+        Scanner input= new Scanner(System.in);
+        System.out.print("Enter the name of the pet: ");
+        String nameSearch=input.nextLine();
+        for(int i = 0;i<petCounter;i++){
+            if(nameSearch.equals(petArray[i].getName())){
+                printTableHeader();
+                System.out.println(petArray[i].getName()+" "+petArray[i].getAge());
+                printTableFooter();}
+    }
+    }
+    public static void searchPetsByAge(){
+        Scanner input= new Scanner(System.in);
+        System.out.print("Eneter the pets age: ");
+        int ageSearch=input.nextInt();
+        for(int i = 0;i<petCounter;i++){
+            if(ageSearch==(petArray[i].getAge())){
+                printTableHeader();
+                System.out.println(petArray[i].getName()+" "+petArray[i].getAge());
+                printTableFooter();}
+        }
     }
 
     public static void printTableHeader(){
