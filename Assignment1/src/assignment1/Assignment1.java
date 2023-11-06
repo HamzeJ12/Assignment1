@@ -18,6 +18,13 @@ public class Assignment1 {
             break;
             case 4:searchPetsByAge();
             break;
+            case 5:updatePets();
+            break;
+            case 6:removeExistingPet();
+            break;
+            case 7:
+                System.out.println("Goodbye!");
+                return;
         }
         }
        
@@ -28,6 +35,9 @@ public class Assignment1 {
         System.out.println("2) Add more pets");
         System.out.println("3) Search pets by name");
         System.out.println("4) Search pets by age");
+        System.out.println("5) Update an existing pet");
+        System.out.println("6) Remove an existing pet");
+        System.out.println("7) Exit Program");
         System.out.println("What would you like to do? ");
         int userInput=input.nextInt();
         return userInput;
@@ -76,6 +86,29 @@ public class Assignment1 {
                 printTableFooter();}
         }
     }
+        public static void updatePets(){
+        Scanner input= new Scanner(System.in);
+        showAllPets();
+        System.out.print("Enter ID of Pet you want to update: ");
+        int updatePet=input.nextInt();
+        System.out.print("Enter updated name and/or age:");
+        String updatedName =input.next();
+        int updatedAge= input.nextInt();
+        petArray[updatePet] = new Pet(updatedName,updatedAge);
+        showAllPets();
+    }
+
+        public static void removeExistingPet(){
+        Scanner input= new Scanner(System.in);
+        showAllPets();
+        System.out.print("Enter ID of Pet you want to remove: ");
+        int removePet=input.nextInt();
+        for(int i=removePet;i<petCounter;i++){
+            petArray[i]=petArray[i+1];
+            petCounter--;
+        }
+        showAllPets();
+        }
 
     public static void printTableHeader(){
         System.out.println("------------------");
@@ -84,7 +117,7 @@ public class Assignment1 {
     }
     public static void printTableRow(){
         for(int i = 0;i<petCounter;i++){
-        System.out.println(i+"      "+petArray[i].getName()+"      "+petArray[i].getAge()+"      ");}
+        System.out.println(i+"      "+petArray[i].getName()+"      "+petArray[i].getAge()+"     ");}
     }
     public static void printTableFooter(){
         System.out.println("__________________");
